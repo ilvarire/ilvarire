@@ -1,0 +1,1 @@
+<img {{ $attributes }} src="{{url('/images/icons/logo-main.svg')}}" alt="IMG-LOGO" style="width: 60px;">
