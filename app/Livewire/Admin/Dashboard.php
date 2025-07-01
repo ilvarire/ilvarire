@@ -31,7 +31,7 @@ class Dashboard extends Component
         $this->loadLineGraphData();
     }
 
-    public function authorizeAccess()
+    protected function authorizeAccess()
     {
         if (!auth()->user() || auth()->user()->role !== 1) {
             abort(403, 'Unauthorized');
