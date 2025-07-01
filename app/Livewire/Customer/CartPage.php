@@ -259,7 +259,7 @@ class CartPage extends Component
             }
             DB::commit();
 
-            Mail::to($order->user->email)->send(
+            Mail::to($order->user->email)->queue(
                 new OrderCreated($order->reference)
             );
 

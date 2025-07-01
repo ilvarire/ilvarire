@@ -56,7 +56,7 @@ class Orders extends Component
         $order->save();
 
         // send order cancelled email
-        Mail::to($order->user->email)->send(
+        Mail::to($order->user->email)->queue(
             new OrderRefunded($order->reference)
         );
         session()->flash('success', 'Order cancelled!');
@@ -74,7 +74,7 @@ class Orders extends Component
         $order->save();
 
         //send order shipped email
-        Mail::to($order->user->email)->send(
+        Mail::to($order->user->email)->queue(
             new OrderShipped($order->reference)
         );
         session()->flash('success', 'Order marked as shipped');
@@ -91,7 +91,7 @@ class Orders extends Component
         $order->status = 'delivered';
         $order->save();
         //send order delivered email
-        Mail::to($order->user->email)->send(
+        Mail::to($order->user->email)->queue(
             new OrderDelivered($order->reference)
         );
         session()->flash('success', 'Order marked as delivered');

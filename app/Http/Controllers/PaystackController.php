@@ -6,6 +6,7 @@ use App\Mail\NewOrder;
 use App\Mail\PaymentCompleted;
 use App\Models\Order;
 use App\Models\Payment;
+use App\Models\User;
 use App\Services\PaystackService;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
@@ -44,13 +45,18 @@ class PaystackController extends Controller
                     'payment_method' => $response['data']['channel']
                 ]);
 
-                Mail::to($order->user->email)->send(
+                Mail::to($order->user->email)->queue(
                     new PaymentCompleted($order->total_price, $order->reference)
                 );
 
-                Mail::to($order->user->email)->send(
-                    new NewOrder($order->reference, $order->total_price)
-                );
+                $users = User::where('role', 1)->get();
+                if ($users) {
+                    foreach ($users as $user) {
+                        Mail::to($user->email)->queue(
+                            new NewOrder($order->reference, $order->total_price)
+                        );
+                    }
+                }
 
                 ProductService::clearCart();
                 return redirect()->route('order.success', $order->reference)->with('success', 'Payment successful!');
