@@ -15,13 +15,15 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('country_id')->constrained()->onDelete('cascade');
-            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->uuid('order_id');
             $table->foreignId('shipping_fee_id')->constrained()->onDelete('cascade');
             $table->string('city');
             $table->string('address');
             $table->string('phone_number');
             $table->string('zip_code')->nullable();
             $table->timestamps();
+
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
         });
     }
 
