@@ -26,17 +26,17 @@ class Dashboard extends Component
 
     public function mount()
     {
-        $this->authorizeAccess();
+        // $this->authorizeAccess();
         $this->loadDashboardData();
         $this->loadLineGraphData();
     }
 
-    protected function authorizeAccess()
-    {
-        if (!auth()->user() || auth()->user()->role !== 1) {
-            abort(403, 'Unauthorized');
-        }
-    }
+    // protected function authorizeAccess()
+    // {
+    //     if (!auth()->user() || auth()->user()->role !== 1) {
+    //         abort(403, 'Unauthorized');
+    //     }
+    // }
 
     protected function loadLineGraphData()
     {
