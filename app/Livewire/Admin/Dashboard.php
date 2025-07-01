@@ -62,12 +62,11 @@ class Dashboard extends Component
                 ->toArray();
         } else {
             $this->lineGraphData = DB::table('orders')
-                ->selectRaw('DATE_FORMAT(created_at, "%b") as month')
-                ->selectRaw('SUM(total_price) as revenue')
+                ->selectRaw('DATE_FORMAT(created_at, "%b") as month, MONTH(created_at) as month_num, SUM(total_price) as revenue')
                 ->where('payment_status', 'paid')
-                ->where('created_at', '>=', now()->subYear())
-                ->groupByRaw('MONTH(created_at)')
-                ->orderByRaw('MONTH(created_at)')
+                ->where('created_at', '>=', now()->startOfYear()) // adjust range if needed
+                ->groupByRaw('DATE_FORMAT(created_at, "%b"), MONTH(created_at)')
+                ->orderBy('month_num')
                 ->get()
                 ->map(function ($row) {
                     return [
