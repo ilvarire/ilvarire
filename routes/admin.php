@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth', 'rolemanager:admin'])->group(function () {
     Route::group(['prefix' => 'admin'], function () {
         //dashboard
-        Route::get('/', Dashboard::class)->name('admin.dashboard');
+        Route::get('/dashboard', Dashboard::class)->name('admin.dashboard');
 
         //categories
         Route::get('/categories', Categories::class)->name('admin.categories');
