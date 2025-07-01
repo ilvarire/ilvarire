@@ -157,7 +157,7 @@
 
                         </form>
 
-                        <button type="submit" class="flex-c-m p-lr-10 trans-04">
+                        <button type="submit" form="logout" class="flex-c-m p-lr-10 trans-04">
                             <div class="left-top-bar">
                                 Logout
                             </div>

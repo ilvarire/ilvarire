@@ -36,7 +36,6 @@ class AuthenticatedSessionController extends Controller
             $user = Auth::user();
             ProductService::syncGuestCartToDatabase($user);
 
-            // return redirect()->intended(route('home', absolute: false));
             return redirect()->intended(route('homepage', absolute: false));
         }
     }
