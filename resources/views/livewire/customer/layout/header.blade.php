@@ -48,7 +48,7 @@
 
                 <!-- Logo desktop -->
                 <a href="{{ route('homepage') }}" class="logo">
-                    <img src="{{ asset('/images/icons/logo-long.png')}}" alt="IMG-LOGO">
+                    <img src="{{ asset('/images/icons/logo-long.png')}}" alt="IMG-LOGO" style="width: 150px;">
                 </a>
 
                 <!-- Menu desktop -->
@@ -106,7 +106,7 @@
     <div class="wrap-header-mobile">
         <!-- Logo moblie -->
         <div class="logo-mobile">
-            <a href="{{ route('homepage') }}"><img src="images/icons/logo-long.png" alt="IMG-LOGO"></a>
+            <a href="{{ route('homepage') }}"><img src="images/icons/logo.png" alt="IMG-LOGO"></a>
         </div>
 
         <!-- Icon header -->
