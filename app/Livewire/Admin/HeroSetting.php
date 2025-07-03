@@ -50,11 +50,11 @@ class HeroSetting extends Component
             $width = $img->width();
             $height = $img->height();
 
-            $expectedRatio = 2 / 1;
+            $expectedRatio = 64 / 31;
             $actualRatio = $width / $height;
             $tolerance = 0.02;
             if (abs($actualRatio - $expectedRatio) > $tolerance) {
-                $this->addError("heroImage", "Hero image must have a 2:1 aspect ratio.");
+                $this->addError("heroImage", "Hero image must have a 64:31 aspect ratio.");
                 return;
             }
         }
