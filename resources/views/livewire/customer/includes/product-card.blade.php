@@ -25,8 +25,7 @@
 
             <div x-data="{open: false}" class="block2-txt-child2 flex-r p-t-3">
 
-                <button style="cursor: pointer; color: rgb(55, 103, 236);"
-                    x-on:click="open = !open; $wire.addToWishlist('{{$product->id}}')"
+                <button style="cursor: pointer;" x-on:click="open = !open; $wire.addToWishlist('{{$product->id}}')"
                     x-bind:style="open ? 'color: black;' : '{{ $this->isInWishlist($product->id) ? 'color: rgb(55, 103, 236)' : ''}}'">
                     <i class="zmdi zmdi-favorite">
                     </i>
