@@ -51,7 +51,7 @@ class Categories extends Component
 
         $category = Category::findOrFail($this->categoryId);
         $category->update([
-            'name' => str(trim($this->editName))->title()
+            'name' => str(trim($this->editName))->lower()
         ]);
         $this->confirmingEdit = false;
         $this->dispatch('modal-close');

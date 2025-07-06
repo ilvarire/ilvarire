@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -113,6 +114,12 @@ class Products extends Component
         }
 
         if (!empty($this->newImages)) {
+            foreach ($product->images as $oldImage) {
+                if (Storage::exists($oldImage->image_url)) {
+                    Storage::delete($oldImage->image_url);
+                }
+                $oldImage->delete();
+            }
             foreach ($this->newImages as $image) {
                 $path = $image->store('producs', 'public');
                 ProductImage::create([
