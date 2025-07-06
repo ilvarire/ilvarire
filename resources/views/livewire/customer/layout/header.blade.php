@@ -106,7 +106,7 @@
     <div class="wrap-header-mobile">
         <!-- Logo moblie -->
         <div class="logo-mobile">
-            <a href="{{ route('homepage') }}"><img src="images/icons/logo.png" alt="IMG-LOGO"></a>
+            <a href="{{ route('homepage') }}"><img src="{{ asset('/images/icons/logo-long.png')}}" alt="IMG-LOGO"></a>
         </div>
 
         <!-- Icon header -->
