@@ -71,6 +71,8 @@ class PaystackController extends Controller
 
     public function handle(Request $request)
     {
+        Log::info('Paystack Webhook Hit');
+        Log::info('Webhook Payload: ', $request->all());
         $payload = $request->all();
 
         Log::info('Paystack webhook received', $payload);
